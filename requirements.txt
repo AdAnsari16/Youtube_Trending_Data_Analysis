@@ -1,6 +1,5 @@
 PySpark==3.1.2
 matplotlib==3.4.1
-Java==8.0
 pandas==1.2.3
 plotly==5.1.0
 scikit-learn ==0.24.2
