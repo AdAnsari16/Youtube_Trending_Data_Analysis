@@ -1,6 +1,8 @@
-PySpark==3.1.2
+
 matplotlib==3.4.1
 pandas==1.2.3
 plotly==5.1.0
 scikit-learn ==0.24.2
-java==8
+streamlit >= 0.66
+pyspark >= 3.0.0
+pytest
