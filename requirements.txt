@@ -7,5 +7,5 @@ streamlit >= 0.66
 pyspark >= 3.0.0
 pytest
 h2o
-pip install import-java
+
 python3 -m pip install <pkg>
