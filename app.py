@@ -77,9 +77,9 @@ def main():
     from wordcloud import WordCloud
     from matplotlib import pyplot as plt
     import matplotlib
-    import tkinter
+    #import tkinter
     text = pandadf5.channel_title[0]
-    matplotlib.use('TkAgg')
+    #matplotlib.use('TkAgg')
    # Create and generate a word cloud image:
     wordcloud = WordCloud().generate(text)
 
