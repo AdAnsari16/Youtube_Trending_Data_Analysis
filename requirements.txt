@@ -12,4 +12,4 @@ spark            ==   0.2.1
 sparksql-magic  ==    0.0.3
 streamlit        ==   1.0.0
 wordcloud        ==   1.8.1
-pyenv==3.4.3
+pyenv==0.0.1
