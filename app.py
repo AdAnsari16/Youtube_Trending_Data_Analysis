@@ -67,25 +67,7 @@ def main():
           tickfont_size=14,
       ))
     st.plotly_chart(fig)
-  if st.button("WordCloud"):
-    st.subheader('WordCloud')
-    data.createOrReplaceTempView("EMP")
-    df5=spark.sql("select video_error_or_removed, concat_ws(',', collect_list(channel_title)) as channel_title from EMP group by video_error_or_removed")
-    df6=df5.select('channel_title').collect()
-    pandadf5=df5.toPandas()
-    from wordcloud import WordCloud
-    from matplotlib import pyplot as plt
-    import matplotlib
-    #import tkinter
-    text = pandadf5.channel_title[0]
-    #matplotlib.use('TkAgg')
-   # Create and generate a word cloud image:
-    wordcloud = WordCloud().generate(text)
-
-  # Display the generated image:  
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis("off")
-    st.pyplot()
+  
 
   st.set_option('deprecation.showPyplotGlobalUse', False)
   if st.button("Compare 3 video production yt channel"):
@@ -158,7 +140,25 @@ def main():
     st.pyplot(fig1)
 
   
-  
+  if st.button("WordCloud"):
+    st.subheader('WordCloud')
+    data.createOrReplaceTempView("EMP")
+    df5=spark.sql("select video_error_or_removed, concat_ws(',', collect_list(channel_title)) as channel_title from EMP group by video_error_or_removed")
+    df6=df5.select('channel_title').collect()
+    pandadf5=df5.toPandas()
+    from wordcloud import WordCloud
+    from matplotlib import pyplot as plt
+    import matplotlib
+    #import tkinter
+    text = pandadf5.channel_title[0]
+    #matplotlib.use('TkAgg')
+   # Create and generate a word cloud image:
+    wordcloud = WordCloud().generate(text)
+
+  # Display the generated image:  
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot()
  
   
 
