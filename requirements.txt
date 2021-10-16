@@ -1,4 +1,4 @@
-
+spark-nlp==3.3.0
 matplotlib==3.4.1
 pandas==1.2.3
 plotly==5.1.0
