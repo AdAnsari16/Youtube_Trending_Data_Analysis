@@ -15,4 +15,4 @@ turtle== 0.0.1
 tcl==0.2
 tk==0.1.0
 opencv-python-headless
-Tkinter >= 8.6
+pygubu==0.16
