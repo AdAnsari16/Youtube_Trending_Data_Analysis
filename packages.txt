@@ -1,2 +1,2 @@
 default-jre
-python3.6.0
+sudo add-apt-repository ppa:deadsnakes/ppa
