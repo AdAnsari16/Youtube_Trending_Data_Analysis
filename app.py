@@ -36,11 +36,11 @@ def load_data():
    # data = spark.read.format("csv").option("header","true").load('USvideos.csv')
     data = spark.read.csv("USvideos.csv", header=True, schema=finalStruct)
     return data
-data_load_state = st.text('Loading Project...')
+
 data = load_data()  
 @st.cache
 def load_data():
-  data_load_state.text("Done! (using st.cache)")
+  data_load_state.text("(using st.cache)")
 def main():  
   #st.table(data.toPandas().sample(n=10))
   if st.button("Max comment count"):
