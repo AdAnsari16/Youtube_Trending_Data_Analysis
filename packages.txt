@@ -1,1 +1,2 @@
 default-jre
+python==3.6.0
