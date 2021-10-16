@@ -11,4 +11,4 @@ spark==0.2.1
 sparksql-magic == 0.0.3
 streamlit == 1.0.0
 wordcloud == 1.8.1
-tkinter==1
+turtle==0
