@@ -69,7 +69,32 @@ def main():
     st.plotly_chart(fig)
   
 
-  st.set_option('deprecation.showPyplotGlobalUse', False)
+    if st.button("Vidoes Publish in Year 2017 and 2018"):
+    st.subheader('Vidoes Publish in Year 2017 and 2018')
+    data.createOrReplaceTempView("EMP")
+    q1=spark.sql("SELECT SUM(IF(year(publish_time) = '2017', 1, 0)) AS Yr2017, SUM(IF(year(publish_time) = '2018', 1, 0)) AS Yr2018 FROM EMP") 
+    #st.table(q1.toPandas())
+  
+    x1=q1.toPandas()['Yr2017'].iloc[0]
+    y1=q1.toPandas()["Yr2018"].iloc[0]
+    #fig = px.bar(data_frame=q1.toPandas(), x=x,y=y)
+    #fig.update_layout(title_text='Vidoes Publish in Year 2017 and 2018')
+    #st.plotly_chart(fig)
+  
+    import plotly.graph_objects as go
+    import matplotlib.pyplot as plt
+    labels = ['2017','2018']
+    values = [x1, y1]
+    explode = (0, 0.1)
+
+    #st.pyplot(fig)
+    fig1, ax1 = plt.subplots()
+    ax1.pie(values, explode=explode, labels=labels, autopct='%1.1f%%',
+          shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+  
+    st.pyplot(fig1)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
   if st.button("Compare 3 video production yt channel"):
     st.subheader('Compare 3 video production yt channel')
     data.createOrReplaceTempView("EMP")
@@ -113,31 +138,7 @@ def main():
     # Here we modify the tickangle of the xaxis, resulting in rotated labels.
     fig=fig.update_layout(barmode='group')
     st.plotly_chart(fig)
-  if st.button("Vidoes Publish in Year 2017 and 2018"):
-    st.subheader('Vidoes Publish in Year 2017 and 2018')
-    data.createOrReplaceTempView("EMP")
-    q1=spark.sql("SELECT SUM(IF(year(publish_time) = '2017', 1, 0)) AS Yr2017, SUM(IF(year(publish_time) = '2018', 1, 0)) AS Yr2018 FROM EMP") 
-    #st.table(q1.toPandas())
-  
-    x1=q1.toPandas()['Yr2017'].iloc[0]
-    y1=q1.toPandas()["Yr2018"].iloc[0]
-    #fig = px.bar(data_frame=q1.toPandas(), x=x,y=y)
-    #fig.update_layout(title_text='Vidoes Publish in Year 2017 and 2018')
-    #st.plotly_chart(fig)
-  
-    import plotly.graph_objects as go
-    import matplotlib.pyplot as plt
-    labels = ['2017','2018']
-    values = [x1, y1]
-    explode = (0, 0.1)
 
-    #st.pyplot(fig)
-    fig1, ax1 = plt.subplots()
-    ax1.pie(values, explode=explode, labels=labels, autopct='%1.1f%%',
-          shadow=True, startangle=90)
-    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-  
-    st.pyplot(fig1)
 
   
   if st.button("WordCloud"):
