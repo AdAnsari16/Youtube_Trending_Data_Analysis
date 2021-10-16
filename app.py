@@ -37,8 +37,7 @@ def load_data():
     data = spark.read.csv("USvideos.csv", header=True, schema=finalStruct)
     return data
 data_load_state = st.text('Loading Project...')
-data = load_data()
-data_load_state.text('Loading Project...done!')    
+data = load_data()  
 @st.cache
 def load_data():
   data_load_state.text("Done! (using st.cache)")
