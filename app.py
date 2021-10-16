@@ -7,7 +7,6 @@ spark = SparkSession.builder\
         .appName("Colab")\
         .config('spark.ui.port', '4050')\
         .getOrCreate()
-tar -xvf Python-3.6.0.tgz
 import streamlit as st
 import pandas as pd
 import numpy as np
