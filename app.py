@@ -43,7 +43,7 @@ def load_data():
   data_load_state.text("(using st.cache)")
 def main():  
   #st.table(data.toPandas().sample(n=10))
-  if st.button("Max comment count"):
+  if st.button("Videos that received most comments by users"):
     from pyspark.sql import functions as F
     df2=data.groupBy("Title").agg(F.max("comment_count"))
     df1=df2.orderBy('max(comment_count)', ascending=False)
@@ -69,8 +69,8 @@ def main():
     st.plotly_chart(fig)
   
 
-  if st.button("Videos Publish in Year 2017 and 2018"):
-    st.subheader('Videos Publish in Year 2017 and 2018')
+  if st.button("Videos posted in the year 2017 and 2018 on YouTube"):
+    #st.subheader('Videos Publish in Year 2017 and 2018')
     data.createOrReplaceTempView("EMP")
     q1=spark.sql("SELECT SUM(IF(year(publish_time) = '2017', 1, 0)) AS Yr2017, SUM(IF(year(publish_time) = '2018', 1, 0)) AS Yr2018 FROM EMP") 
     #st.table(q1.toPandas())
@@ -95,8 +95,8 @@ def main():
   
     st.pyplot(fig1)
     st.set_option('deprecation.showPyplotGlobalUse', False)
-  if st.button("Compare 3 video production yt channel"):
-    st.subheader('Compare 3 video production yt channel')
+  if st.button("Performance of three YouTube channels based on likes, dislikes, and comment count"):
+    #st.subheader('Compare 3 video production yt channel')
     data.createOrReplaceTempView("EMP")
  
     a1=spark.sql("SELECT trending_date,title,channel_title, views,likes,dislikes,comment_count,thumbnail_link  from EMP WHERE channel_title like 'Warner Bros. Pictures' order by views desc")
@@ -141,8 +141,8 @@ def main():
 
 
   
-  if st.button("WordCloud"):
-    st.subheader('WordCloud')
+  if st.button("WordCloud: Frequency of videos uploaded by various YouTube channels"):
+    #st.subheader('WordCloud')
     data.createOrReplaceTempView("EMP")
     df5=spark.sql("select video_error_or_removed, concat_ws(',', collect_list(channel_title)) as channel_title from EMP group by video_error_or_removed")
     df6=df5.select('channel_title').collect()
